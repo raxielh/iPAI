@@ -17,6 +17,7 @@ class Entradas extends Migration
         Schema::create('entradas', function (Blueprint $table) {
             $table->increments('id');
             $table->string('cantidad', 100);
+            $table->string('factura', 100)->nullable();
             $table->string('lote', 100);
             $table->string('cantidad_dosis', 100);
             $table->integer('productos_id')->unsigned();

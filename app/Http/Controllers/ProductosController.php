@@ -91,7 +91,7 @@ class ProductosController extends AppBaseController
             return redirect(route('productos.index'));
         }
 
-        $entradas = DB::table('entradas')->where('productos_id',$id)->get();
+        $entradas = DB::table('entradas')->where('productos_id',$id)->orderByRaw('id DESC')->get();
 
 
         return view('productos.show')->with('productos', $productos)->with('entradas', $entradas);
@@ -166,4 +166,24 @@ class ProductosController extends AppBaseController
 
         return redirect(route('productos.index'));
     }
+
+    public function entrada(Request $request)
+    {
+        $input = $request->all();
+
+        $Entradas = new Entradas;
+        $Entradas->cantidad = $request->cantidad;
+        $Entradas->lote = $request->lote;
+        $Entradas->cantidad_dosis = $request->cantidad_dosis;
+        $Entradas->fecha_ingreso = $request->fecha_ingreso;
+        $Entradas->fecha_vencimiento = $request->fecha_vencimiento;
+        $Entradas->productos_id = $request->productos_id;
+        $Entradas->factura = $request->factura;
+        $Entradas->save();
+
+        Flash::success('Entrada con exito.');
+
+        return back()->withInput();
+    }
+
 }

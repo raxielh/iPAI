@@ -26,6 +26,7 @@ class Entradas extends Model
         'cantidad_dosis',
         'productos_id',
         'fecha_ingreso',
+        'factura',
         'fecha_vencimiento'
     ];
 
@@ -40,6 +41,7 @@ class Entradas extends Model
         'cantidad_dosis'=> 'integer',
         'productos_id'=> 'integer',
         'fecha_ingreso'=> 'date',
+        'factura'=> 'string',
         'fecha_vencimiento'=> 'date',
     ];
 
